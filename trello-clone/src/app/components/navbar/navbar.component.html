@@ -1,0 +1,119 @@
+<nav class="px-6 border-gray-200 shadow-md bg-sky-700">
+  <div class="flex flex-wrap items-center justify-between">
+    <div class="flex items-center">
+      <a routerLink="/">
+        <img
+          loading="lazy"
+          class="w-20 mr-8"
+          src="/assets/images/logo.png"
+          alt="logo"
+        />
+      </a>
+      <div class="flex items-center">
+        <ul class="flex items-center space-x-2 text-sm font-medium">
+          <li>
+            <a class="block px-4 py-3 text-white">Workspaces</a>
+          </li>
+          <li>
+            <a class="block px-4 py-3 text-white">Recent</a>
+          </li>
+          <li>
+            <app-btn typeBtn="button" colorPal="primary">Create</app-btn>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="flex items-center">
+      <button
+        type="button"
+        class="flex rounded-full"
+        aria-expanded="false"
+        type="button"
+        (click)="isOpen = !isOpen"
+        cdkOverlayOrigin
+        #menuOverlay="cdkOverlayOrigin"
+      >
+        <img
+          class="w-8 h-8 rounded-full"
+          src="/assets/images/face.png"
+          alt="user photo"
+        />
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Contenido del overlay -->
+<ng-template
+  cdkConnectedOverlay
+  [cdkConnectedOverlayOrigin]="menuOverlay"
+  [cdkConnectedOverlayOpen]="isOpen"
+>
+<div
+  class="z-50 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow w-60"
+>
+  <div class="flex justify-between px-4 py-3">
+    <span class="block text-sm text-center text-gray-900">Account</span>
+    <button (click)="isOpen = !isOpen" class="block text-sm text-gray-900">
+      x
+    </button>
+  </div>
+  <div class="flex items-center px-4 py-3 space-x-4">
+    <img
+      class="w-10 h-10 rounded-full"
+      src="/assets/images/face.png"
+      alt=""
+    />
+    <div class="space-y-1">
+      <div>Jese Leos</div>
+      <div class="text-sm text-gray-500">nico@gmail.com</div>
+    </div>
+  </div>
+  <ul class="py-1" >
+    <li>
+      <a
+        href="#"
+        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
+        >Profile</a
+      >
+    </li>
+    <li>
+      <a
+        href="#"
+        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
+        >Activity</a
+      >
+    </li>
+    <li>
+      <a
+        href="#"
+        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
+        >Cards</a
+      >
+    </li>
+    <li>
+      <a
+        href="#"
+        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
+        >Settings</a
+      >
+    </li>
+    <li>
+      <a
+        href="#"
+        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
+        >Sign out</a
+      >
+    </li>
+  </ul>
+  <ul class="py-1">
+    <li>
+      <a
+        href="#"
+        class="block px-4 py-2 text-sm text-gray-700"
+        >Log out</a
+      >
+    </li>
+  </ul>
+</div>
+</ng-template>
