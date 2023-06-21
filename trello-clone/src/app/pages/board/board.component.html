@@ -27,15 +27,28 @@
             [cdkDropListData]="col.todos"
           >
             <div
+              *ngFor="let todo of col.todos"
               class="p-2 mt-2 bg-white border-b rounded shadow cursor-pointer border-x-gray-300 hover:bg-gray-400"
               cdkDrag
-              *ngFor="let todo of col.todos"
+              (click)="openDialog(todo)"
             >
               {{ todo.title }}
             </div>
           </div>
         </div>
-        <button (click)="addColumn()">Add Column</button>
+
+        <div class="p-2 mr-3 bg-gray-200 rounded w-72 shrink-0">
+          <input
+            type="text"
+            *ngIf="isAddingCol"
+            [formControl]="newTitle"
+            class="w-full p-2 mb-2 bg-gray-100 border-gray-300 rounded border-1 mar"
+            id="newTitle"
+          />
+          <app-btn [typeBtn]="'button'" (click)="addColumn()">
+            {{ isAddingCol ? "Create" : "Add Column" }}
+          </app-btn>
+        </div>
       </div>
     </div>
   </div>
